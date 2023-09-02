@@ -63,13 +63,13 @@ func findClipboardUtility() commandInfo {
 	}
 
 	if os.Getenv("WSL_DISTRO_NAME") != "" {
-		pasteCmdArgs = powershellExePasteArgs
-		copyCmdArgs = clipExeCopyArgs
+		c.pasteCmdArgs = powershellExePasteArgs
+		c.copyCmdArgs = clipExeCopyArgs
 		c.trimDOS = true
 
 		if _, err := exec.LookPath(clipExe); err == nil {
 			if _, err := exec.LookPath(powershellExe); err == nil {
-				return
+				return c
 			}
 		}
 	}
